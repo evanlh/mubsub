@@ -7,7 +7,6 @@ client.on('error', console.error);
 channel.on('error', console.error);
 
 setInterval(function () {
-    console.log("trying!");
     channel.publish('foo', { foo: 'bar', time: Date.now() }, function (err) {
         if (err) {
           console.log(err.stack || err.toString());
