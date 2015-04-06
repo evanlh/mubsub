@@ -8,8 +8,14 @@ var handleError = function(err){
 };
 
 channel.on('error', handleError);
+channel.on('ready', function(){ console.log("Channel ready"); });
+channel.on('close', function(){ console.log("Channel closed"); });
 client.on('error', handleError);
 
+var messages = 0;
 channel.subscribe('foo', function (message) {
-    console.log(message);
+    //console.log(message);
+    messages++;
 });
+
+setInterval(function(){ console.log(messages); messages = 0; }, 1000);

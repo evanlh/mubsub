@@ -5,6 +5,8 @@ var channel = client.channel('example');
 
 client.on('error', console.error);
 channel.on('error', console.error);
+channel.on('ready', function(){ console.log("Channel ready"); });
+channel.on('close', function(){ console.log("Channel closed"); });
 
 setInterval(function () {
     channel.publish('foo', { foo: 'bar', time: Date.now() }, function (err) {
@@ -12,5 +14,5 @@ setInterval(function () {
           console.log(err.stack || err.toString());
           throw err;
         }
-    });
-}, 2000);
+    })
+}, 0);
